@@ -28,4 +28,10 @@ public class DroneDaoImpl implements DroneDao {
         Drone droneDb = entityManager.merge(drone);
         return drone;
     }
+
+    @Override
+    public List<Drone> findAvailable() {
+        List<Drone> drones = entityManager.createQuery("FROM Drone WHERE state = 0", Drone.class).getResultList();
+        return drones;
+    }
 }

@@ -8,5 +8,5 @@ public interface DroneService {
 
     List<Drone> findAll();
     Drone saveDrone(Drone drone);
-
+    List<Drone> findAvailable();
 }

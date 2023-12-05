@@ -25,4 +25,9 @@ public class DroneRestController {
         return droneService.saveDrone(drone);
     }
 
+    @GetMapping("/available")
+    public java.util.List<Drone> findAvailable() {
+        return droneService.findAvailable();
+    }
+
 }

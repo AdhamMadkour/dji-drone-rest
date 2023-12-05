@@ -22,6 +22,11 @@ public class DroneServiceImpl implements DroneService {
     }
 
     @Override
+    public List<Drone> findAvailable() {
+        return droneDao.findAvailable();
+    }
+
+    @Override
     public List<Drone> findAll() {
         return droneDao.findAll();
     }
