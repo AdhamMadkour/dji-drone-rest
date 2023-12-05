@@ -19,6 +19,14 @@ public class MedicationDaoImpl implements MedicationDao {
     @Override
     public Medication saveMedication(Medication medication) {
         Drone drone = entityManager.find(Drone.class, medication.getDrone().getSerialNumber());
+        int droneWeight = drone.getWeightLimit();
+        int medicationWeight = medication.getWeight();
+        for (Medication medication1 : drone.getMedications()) {
+            medicationWeight += medication1.getWeight();
+        }
+        if (medicationWeight > droneWeight) {
+            throw new RuntimeException("Drone weight limit exceeded");
+        }
         drone.add(medication);
         entityManager.persist(medication);
         return medication;

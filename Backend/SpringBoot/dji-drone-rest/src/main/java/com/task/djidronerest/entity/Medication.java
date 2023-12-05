@@ -14,6 +14,9 @@ public class Medication {
     private String name;
     @Column(name = "code")
     private String code;
+
+    @Column(name = "weight")
+    private Integer weight;
     @Column(name = "image")
     private String image;
 
@@ -26,9 +29,10 @@ public class Medication {
 
     }
 
-    public Medication(String name, String code, String image, Drone drone) {
+    public Medication(String name, String code, Integer weight, String image, Drone drone) {
         this.name = name;
         this.code = code;
+        this.weight = weight;
         this.image = image;
         this.drone = drone;
     }
@@ -66,6 +70,14 @@ public class Medication {
         this.image = image;
     }
 
+    public Integer getWeight() {
+        return weight;
+    }
+
+    public void setWeight(Integer weight) {
+        this.weight = weight;
+    }
+
     public Drone getDrone() {
         return drone;
     }
@@ -80,6 +92,7 @@ public class Medication {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", code='" + code + '\'' +
+                ", weight=" + weight +
                 ", image='" + image + '\'' +
                 ", drone=" + drone +
                 '}';
