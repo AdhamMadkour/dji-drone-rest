@@ -1,7 +1,9 @@
 package com.task.djidronerest.service;
 
+import com.task.djidronerest.dao.BatteryDetailsReponse;
 import com.task.djidronerest.dao.DroneDao;
 import com.task.djidronerest.entity.Drone;
+import org.apache.tomcat.util.json.JSONParser;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,6 +26,11 @@ public class DroneServiceImpl implements DroneService {
     @Override
     public List<Drone> findAvailable() {
         return droneDao.findAvailable();
+    }
+
+    @Override
+    public BatteryDetailsReponse getDroneBattery(String serialNumber) {
+        return droneDao.getDroneBattery(serialNumber);
     }
 
     @Override

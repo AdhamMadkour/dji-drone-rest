@@ -1,7 +1,9 @@
 package com.task.djidronerest.rest;
 
+import com.task.djidronerest.dao.BatteryDetailsReponse;
 import com.task.djidronerest.entity.Drone;
 import com.task.djidronerest.service.DroneService;
+import org.apache.tomcat.util.json.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,6 +30,11 @@ public class DroneRestController {
     @GetMapping("/available")
     public java.util.List<Drone> findAvailable() {
         return droneService.findAvailable();
+    }
+
+    @GetMapping("/dronebatttery/{serialNumber}")
+    public BatteryDetailsReponse getDroneBattery(@PathVariable String serialNumber) {
+        return droneService.getDroneBattery(serialNumber);
     }
 
 }

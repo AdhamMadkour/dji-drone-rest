@@ -34,4 +34,16 @@ public class DroneDaoImpl implements DroneDao {
         List<Drone> drones = entityManager.createQuery("FROM Drone WHERE state = 0", Drone.class).getResultList();
         return drones;
     }
+
+    @Override
+    public BatteryDetailsReponse getDroneBattery(String serialNumber) {
+        Drone drone = entityManager.find(Drone.class, serialNumber);
+        if (drone == null) {
+            throw new RuntimeException("Drone with serial number " + serialNumber + " not found");
+        }
+        BatteryDetailsReponse batteryDetailsReponse = new BatteryDetailsReponse();
+        batteryDetailsReponse.setSerialNumber(drone.getSerialNumber());
+        batteryDetailsReponse.setBatteryPercentage(drone.getBatteryCapacity());
+        return batteryDetailsReponse;
+    }
 }
