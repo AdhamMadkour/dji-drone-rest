@@ -1,17 +1,12 @@
 package com.task.djidronerest.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.*;
 
-//A Drone has:
-//
-//        serial number (100 characters max);
-//        model (Lightweight, Middleweight, Cruiserweight, Heavyweight);
-//        weight limit (500gr max);
-//        battery capacity (percentage);
-//        state (IDLE, LOADING, LOADED, DELIVERING, DELIVERED, RETURNING).
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "drone")
@@ -21,22 +16,27 @@ public class Drone {
     private String serialNumber;
     @Column(name = "model", nullable = false)
     private Model model;
-    @Column(name = "weight_limit", nullable = false, length = 500)
+    @Column(name = "weight_limit", nullable = false)
     private Integer weightLimit;
-    @Column(name = "battery_capacity", nullable = false, length = 100)
+    @Column(name = "battery_capacity", nullable = false)
     private Integer batteryCapacity;
     @Column(name = "state")
     private State state;
 
+    @OneToMany(mappedBy = "drone", cascade = CascadeType.ALL)
+    @JsonManagedReference
+    List<Medication> medications;
+
     public Drone() {
     }
 
-    public Drone(String serialNumber, Model model, Integer weightLimit, Integer batteryCapacity, State state) {
+    public Drone(String serialNumber, Model model, Integer weightLimit, Integer batteryCapacity, State state, List<Medication> medications) {
         this.serialNumber = serialNumber;
         this.model = model;
         this.weightLimit = weightLimit;
         this.batteryCapacity = batteryCapacity;
         this.state = state;
+        this.medications = medications;
     }
 
     public String getSerialNumber() {
@@ -79,6 +79,21 @@ public class Drone {
         this.state = state;
     }
 
+    public List<Medication> getMedications() {
+        return medications;
+    }
+
+    public void setMedications(List<Medication> medications) {
+        this.medications = medications;
+    }
+
+    public void add(Medication medication) {
+        if (medications == null)
+            medications = new ArrayList<>();
+        medications.add(medication);
+        medication.setDrone(this);
+    }
+
     @Override
     public String toString() {
         return "Drone{" +
@@ -87,6 +102,7 @@ public class Drone {
                 ", weightLimit=" + weightLimit +
                 ", batteryCapacity=" + batteryCapacity +
                 ", state=" + state +
+                ", medications=" + medications +
                 '}';
     }
 }
