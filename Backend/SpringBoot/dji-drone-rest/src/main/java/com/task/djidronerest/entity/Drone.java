@@ -105,13 +105,3 @@ public class Drone {
                 '}';
     }
 }
-/*
-* JSON:
- {
- "serialNumber": "string",
- "model": "Lightweight",
-"weightLimit": 0,
-"batteryCapacity": 0,
-"state": "IDLE"
- }
-* */

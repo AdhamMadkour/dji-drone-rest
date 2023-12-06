@@ -38,7 +38,7 @@ public class DroneDaoImpl implements DroneDao {
         if (drone.getBatteryCapacity() < 25 && drone.getState() == State.LOADING) {
             throw new RuntimeException("Drone with serial number " + drone.getSerialNumber() + " has low battery");
         }
-        Drone droneDb = entityManager.merge(drone);
+        entityManager.merge(drone);
         return drone;
     }
 

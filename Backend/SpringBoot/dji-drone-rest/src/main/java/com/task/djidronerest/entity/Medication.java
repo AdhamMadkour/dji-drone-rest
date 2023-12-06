@@ -98,19 +98,3 @@ public class Medication {
                 '}';
     }
 }
-/*
-* JSON:
- {
- "name": "Paracetamol",
-"code": "123456789",
- "image": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.chemistwarehouse.com.au%2Fbuy%2F100%2FParacetamol-500mg-100-Tablets&psig=AOvVaw1QZ6Z4Z4Z4Z4Z4Z4Z4Z4Z4&ust=1634172021-10-14T13:00:00.000+00:00",
-"drone": {
- "serialNumber": "123456789",
- "model": "Lightweight",
- "weightLimit": 100,
- "batteryCapacity": 100,
- "state": "AVAILABLE"
- }
- }
-*
-* */
