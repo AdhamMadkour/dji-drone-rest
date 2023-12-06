@@ -18,7 +18,6 @@ public class MedicationServiceImpl implements MedicaionService {
     @Transactional
     @Override
     public Medication saveMedication(Medication medication) {
-        System.out.println("MedicationServiceImpl.saveMedication: " + medication);
         return medicationDao.saveMedication(medication);
     }
 }

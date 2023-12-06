@@ -17,6 +17,7 @@ public class DroneServiceImpl implements DroneService {
         this.droneDao = droneDao;
     }
 
+
     @Transactional
     @Override
     public Drone saveDrone(Drone drone) {
@@ -34,7 +35,13 @@ public class DroneServiceImpl implements DroneService {
     }
 
     @Override
+    public Drone findById(String serialNumber) {
+        return droneDao.findById(serialNumber);
+    }
+
+    @Override
     public List<Drone> findAll() {
         return droneDao.findAll();
     }
+
 }

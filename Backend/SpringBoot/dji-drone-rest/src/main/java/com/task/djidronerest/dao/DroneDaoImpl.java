@@ -19,6 +19,15 @@ public class DroneDaoImpl implements DroneDao {
     }
 
     @Override
+    public Drone findById(String serialNumber) {
+        Drone drone = entityManager.find(Drone.class, serialNumber);
+        if (drone == null) {
+            throw new RuntimeException("Drone with serial number " + serialNumber + " not found");
+        }
+        return drone;
+    }
+
+    @Override
     public List<Drone> findAll() {
         List<Drone> drones = entityManager.createQuery("FROM Drone", Drone.class).getResultList();
         return drones;

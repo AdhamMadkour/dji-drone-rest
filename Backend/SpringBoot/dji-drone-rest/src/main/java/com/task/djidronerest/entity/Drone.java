@@ -23,7 +23,7 @@ public class Drone {
     @Column(name = "state")
     private State state;
 
-    @OneToMany(mappedBy = "drone", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "drone", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonManagedReference
     List<Medication> medications;
 

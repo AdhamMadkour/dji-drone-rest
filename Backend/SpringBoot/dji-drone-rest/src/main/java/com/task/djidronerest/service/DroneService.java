@@ -7,8 +7,9 @@ import org.apache.tomcat.util.json.JSONParser;
 import java.util.List;
 
 public interface DroneService {
-
+    Drone findById(String serialNumber);
     List<Drone> findAll();
+
     Drone saveDrone(Drone drone);
     List<Drone> findAvailable();
 
