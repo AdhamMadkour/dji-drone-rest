@@ -38,6 +38,7 @@ git clone https://github.com/AdhamMadkour/dji-drone-rest.git
 
 ### 4- Now you can use the API
 
+
 ## API Documentation
 
 Base URL: `http://localhost:8080`
@@ -277,7 +278,6 @@ GET /api/dronebattery/{serialNumber}
 
 ## 7. There is also more endpoints you can check swagger documentation
 
-```HTTP
+```
 http://localhost:8080/swagger-ui/index.html
 ```
-
