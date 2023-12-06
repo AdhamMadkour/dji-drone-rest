@@ -3,12 +3,14 @@ package com.task.djidronerest.service;
 import com.task.djidronerest.dao.BatteryDetailsReponse;
 import com.task.djidronerest.dao.DroneDao;
 import com.task.djidronerest.entity.Drone;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
+@Primary
 public class DroneServiceImpl implements DroneService {
     private DroneDao droneDao;
 
