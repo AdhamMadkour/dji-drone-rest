@@ -1,6 +1,7 @@
 package com.task.djidronerest.dao;
 
 import com.task.djidronerest.entity.Drone;
+import com.task.djidronerest.entity.State;
 import jakarta.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -25,6 +26,9 @@ public class DroneDaoImpl implements DroneDao {
 
     @Override
     public Drone saveDrone(Drone drone) {
+        if (drone.getBatteryCapacity() < 25 && drone.getState() == State.LOADING) {
+            throw new RuntimeException("Drone with serial number " + drone.getSerialNumber() + " has low battery");
+        }
         Drone droneDb = entityManager.merge(drone);
         return drone;
     }
