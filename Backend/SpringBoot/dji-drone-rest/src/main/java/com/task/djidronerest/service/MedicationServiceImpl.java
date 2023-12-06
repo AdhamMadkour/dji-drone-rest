@@ -5,8 +5,6 @@ import com.task.djidronerest.entity.Medication;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.security.PrivateKey;
-
 @Service
 public class MedicationServiceImpl implements MedicaionService {
     private MedicationDao medicationDao;

@@ -3,7 +3,6 @@ package com.task.djidronerest.service;
 import com.task.djidronerest.dao.BatteryDetailsReponse;
 import com.task.djidronerest.dao.DroneDao;
 import com.task.djidronerest.entity.Drone;
-import org.apache.tomcat.util.json.JSONParser;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

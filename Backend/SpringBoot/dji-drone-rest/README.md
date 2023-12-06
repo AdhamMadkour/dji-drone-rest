@@ -36,7 +36,7 @@ Content-Type: application/json
 
 The API supports the following endpoints:
 
-### 1. Get all drones
+## 1. Get all drones
 
 Returns a list of all drones in the database.
 
@@ -166,6 +166,9 @@ POST /api/medication
 }
 ```
 
+> **Note:** The API will return an error if the drone is not in `LOADING` state or
+> the medication item's weight exceeds the drone's weight limit.
+
 - Example response:
 
 ```JSON
@@ -252,4 +255,9 @@ GET /api/dronebattery/{serialNumber}
   "serialNumber": "AB",
   "batteryPercentage": 50
 }
+```
+## 7. There is also more endpoints you can check swagger documentation
+
+```HTTP
+http://localhost:8080/swagger-ui/index.html
 ```
