@@ -118,7 +118,7 @@ class DjiDroneRestApplicationTests {
     public void testSaveMedicationtoDrone() {
         Medication medication = new Medication();
         medication.setName("Paracetamol");
-        medication.setWeight(10);
+        medication.setWeight(0);
         medication.setCode("PCT");
         medication.setImage("paracetamol.jpg");
         Drone drone = droneService.findById("DJI0004");

@@ -20,6 +20,24 @@
 
 ## How to run the project
 
+#### 1- Clone the project
+
+```bash
+git clone https://github.com/AdhamMadkour/dji-drone-rest.git
+```
+
+### 2- Configure the database
+
+    * Create a database with preferred name
+    * Change the datasource url in application.properties file
+    * Change the username and password in application.properties file
+    * Go to the seed.sql file and copy the content and paste it in your database query console and run it
+    * Now you have the database ready to run the project
+
+### 3- Run the `DjiDroneRestApplicationTests` class
+
+### 4- Now you can use the API
+
 ## API Documentation
 
 Base URL: `http://localhost:8080`
@@ -112,9 +130,9 @@ Returns a Drone object with its loaded medication items.
 GET /api/drone/{serialNumber}
 ```
 
-| Parameter | Type     | Description                         |
-| :-------- | :------- |:------------------------------------|
-| `id`      | `string` | The unique identifier of the Drone  |
+| Parameter | Type     | Description                        |
+|:----------|:---------|:-----------------------------------|
+| `id`      | `string` | The unique identifier of the Drone |
 
 - Example response:
 
@@ -160,9 +178,9 @@ POST /api/medication
   "code": "123456789",
   "weight": 20,
   "image": "dawaa.jpg",
-    "drone": {
-        "serialNumber": "ABC"
-    }
+  "drone": {
+    "serialNumber": "ABC"
+  }
 }
 ```
 
@@ -244,9 +262,9 @@ Returns the battery status of a drone.
 GET /api/dronebattery/{serialNumber}
 ```
 
-| Parameter | Type     | Description                         |
-| :-------- | :------- |:------------------------------------|
-| `id`      | `string` | The unique identifier of the Drone  |
+| Parameter | Type     | Description                        |
+|:----------|:---------|:-----------------------------------|
+| `id`      | `string` | The unique identifier of the Drone |
 
 - Example response:
 
@@ -256,8 +274,10 @@ GET /api/dronebattery/{serialNumber}
   "batteryPercentage": 50
 }
 ```
+
 ## 7. There is also more endpoints you can check swagger documentation
 
 ```HTTP
 http://localhost:8080/swagger-ui/index.html
 ```
+
