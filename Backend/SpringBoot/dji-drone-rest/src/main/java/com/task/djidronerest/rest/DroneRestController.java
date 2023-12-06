@@ -31,9 +31,13 @@ public class DroneRestController {
         return droneService.findAvailable();
     }
 
-    @GetMapping("/dronebatttery/{serialNumber}")
+    @GetMapping("/dronebattery/{serialNumber}")
     public BatteryDetailsReponse getDroneBattery(@PathVariable String serialNumber) {
         return droneService.getDroneBattery(serialNumber);
     }
 
+    @GetMapping("/drone/{serialNumber}")
+    public Drone getDroneMedication(@PathVariable String serialNumber) {
+        return droneService.findById(serialNumber);
+    }
 }

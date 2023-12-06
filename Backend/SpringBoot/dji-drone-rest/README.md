@@ -1,6 +1,7 @@
 # Elmenus Technical Task
 
-## Tools used 
+## Tools used
+
 ![](https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white)
 ![](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white)
 ![](https://img.shields.io/badge/Maven-C71A36?style=for-the-badge&logo=apache-maven&logoColor=white)
@@ -12,18 +13,16 @@
 ![](https://img.shields.io/badge/Github-181717?style=for-the-badge&logo=github&logoColor=white)
 
 ## Diagrams
+
 ### Database Diagram
 
 ![](Doc_res/DatabaseDiagram.png)
 
 ## How to run the project
 
-
-
-
 ## API Documentation
 
- Base URL: `http://localhost:8080`
+Base URL: `http://localhost:8080`
 
 ### Note
 
@@ -32,15 +31,19 @@
 ```
 Content-Type: application/json
 ```
+
 ## Endpoints
+
 The API supports the following endpoints:
 
 ### 1. Get all drones
+
 Returns a list of all drones in the database.
 
 ```HTTP
 GET /api/drones
 ```
+
 - Example response:
   ```JSON
   [
@@ -68,3 +71,185 @@ GET /api/drones
         ]
     }]
   ```
+
+## 2. Register a new drone
+
+Registers a new drone in the database.
+
+```HTTP 
+POST /api/drone
+```
+
+- Example request body:
+
+```JSON
+{
+  "serialNumber": "ABC",
+  "model": "Heavyweight",
+  "weightLimit": 50,
+  "batteryCapacity": 12,
+  "state": "LOADING"
+}
+```
+
+- Example response:
+
+```JSON
+{
+  "serialNumber": "ABC",
+  "model": "Heavyweight",
+  "weightLimit": 50,
+  "batteryCapacity": 12,
+  "state": "LOADING"
+}
+```
+
+## 3. Checking loaded medication items for a given drone
+
+Returns a Drone object with its loaded medication items.
+
+```HTTP
+GET /api/drone/{serialNumber}
+```
+
+| Parameter | Type     | Description                         |
+| :-------- | :------- |:------------------------------------|
+| `id`      | `string` | The unique identifier of the Drone  |
+
+- Example response:
+
+```JSON
+{
+  "serialNumber": "ABC",
+  "model": "Heavyweight",
+  "weightLimit": 50,
+  "batteryCapacity": 12,
+  "state": "LOADING",
+  "medications": [
+    {
+      "id": 6,
+      "name": "dawaa",
+      "code": "123456789",
+      "weight": 20,
+      "image": "dawaa.jpg"
+    },
+    {
+      "id": 7,
+      "name": "bestInTheWest",
+      "code": "65433fg",
+      "weight": 30,
+      "image": "bestInTheWest.jpg"
+    }
+  ]
+}
+```
+
+## 4. Loading a medication
+
+Loads a medication item into a drone.
+
+```HTTP
+POST /api/medication
+```
+
+- Example request body:
+
+```JSON
+{
+  "name": "dawaa",
+  "code": "123456789",
+  "weight": 20,
+  "image": "dawaa.jpg",
+    "drone": {
+        "serialNumber": "ABC"
+    }
+}
+```
+
+- Example response:
+
+```JSON
+{
+  "id": 6,
+  "name": "dawaa",
+  "code": "123456789",
+  "weight": 20,
+  "image": "dawaa.jpg"
+}
+```
+
+## 5. Checking available drones for delivery
+
+Returns a list of all available drones in state `IDLE`
+
+```HTTP
+GET /api/drones/available
+```
+
+- Example response:
+
+```JSON
+[
+  {
+    "serialNumber": "DJI0004",
+    "model": "Cruiserweight",
+    "weightLimit": 250,
+    "batteryCapacity": 100,
+    "state": "IDLE",
+    "medications": [
+      {
+        "id": 8,
+        "name": "Paracetamol",
+        "code": "PCT",
+        "weight": 10,
+        "image": "paracetamol.jpg"
+      }
+    ]
+  },
+  {
+    "serialNumber": "DJI0005",
+    "model": "Cruiserweight",
+    "weightLimit": 250,
+    "batteryCapacity": 20,
+    "state": "IDLE",
+    "medications": [
+      {
+        "id": 12,
+        "name": "Paracetamol",
+        "code": "PCT",
+        "weight": 10,
+        "image": "paracetamol.jpg"
+      }
+    ]
+  },
+  {
+    "serialNumber": "jsdfhksd",
+    "model": "Heavyweight",
+    "weightLimit": 50,
+    "batteryCapacity": 25,
+    "state": "IDLE",
+    "medications": []
+  }
+]
+```
+
+## 6. Checking the Drone Battery Status
+
+Returns the battery status of a drone.
+
+```HTTP
+GET /api/dronebattery/{serialNumber}
+```
+
+| Parameter | Type     | Description                         |
+| :-------- | :------- |:------------------------------------|
+| `id`      | `string` | The unique identifier of the Drone  |
+
+- Example response:
+
+```JSON
+{
+  "serialNumber": "AB",
+  "batteryPercentage": 50
+}
+```

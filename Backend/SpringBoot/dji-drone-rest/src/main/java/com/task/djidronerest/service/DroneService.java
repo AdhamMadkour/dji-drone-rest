@@ -14,4 +14,5 @@ public interface DroneService {
     List<Drone> findAvailable();
 
     BatteryDetailsReponse getDroneBattery(String serialNumber);
+
 }
