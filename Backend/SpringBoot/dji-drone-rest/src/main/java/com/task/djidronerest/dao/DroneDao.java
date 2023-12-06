@@ -1,7 +1,6 @@
 package com.task.djidronerest.dao;
 
 import com.task.djidronerest.entity.Drone;
-import org.apache.tomcat.util.json.JSONParser;
 
 import java.util.List;
 
