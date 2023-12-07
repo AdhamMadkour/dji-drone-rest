@@ -45,4 +45,9 @@ public class DroneServiceImpl implements DroneService {
         return droneDao.findAll();
     }
 
+    @Override
+    public List<Drone> findAllWithPaginationAndSorting(int pageNumber, int pageSize, String sortBy, String sortDirection) {
+        return droneDao.findAllWithPaginationAndSorting(pageNumber, pageSize, sortBy, sortDirection);
+    }
+
 }

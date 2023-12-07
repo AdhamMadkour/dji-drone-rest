@@ -60,7 +60,16 @@ The API supports the following endpoints:
 
 ## 1. Get all drones
 
-Returns a list of all drones in the database.
+Returns a list of all drones in the database with their loaded medication items.
+
+###  Query Parameters to filter the results
+
+| Parameter       | Type     | Description                    |
+|:----------------|:---------|:-------------------------------|
+| `pageNumber`    | `int`    | The page number of the results |
+| `pageSize`      | `int`    | The page size of the results   |
+| `sortBy`        | `String` | The field name to sort by      |
+| `sortDirection` | `String` | The direction of the sorting   |
 
 ```HTTP
 GET /api/drones

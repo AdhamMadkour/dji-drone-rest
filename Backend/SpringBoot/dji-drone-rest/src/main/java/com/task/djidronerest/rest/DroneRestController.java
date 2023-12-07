@@ -18,15 +18,31 @@ public class DroneRestController {
     private DroneService droneService;
 
     @Autowired
-    public DroneRestController(DroneService droneService) {this.droneService = droneService;}
+    public DroneRestController(DroneService droneService) {
+        this.droneService = droneService;
+    }
+
+//    @GetMapping("/drone")
+//    @Operation(
+//            summary = "Get all drones and the medication they are carrying",
+//            description = "Get all drones and the medication they are carrying"
+//    )
+//    public java.util.List<Drone> findAll() {
+//        return droneService.findAll();
+//    }
 
     @GetMapping("/drone")
     @Operation(
-            summary = "Get all drones and the medication they are carrying",
-            description = "Get all drones and the medication they are carrying"
+            summary = "Get all drones and the medication they are carrying with pagination and sorting",
+            description = "Get all drones and the medication they are carrying with pagination and sorting"
     )
-    public java.util.List<Drone> findAll() {
-        return droneService.findAll();
+    public java.util.List<Drone> findAllWithPaginationAndSorting(
+            @RequestParam(defaultValue = "1") int pageNumber,
+            @RequestParam(defaultValue = "10") int pageSize,
+            @RequestParam(defaultValue = "serialNumber") String sortBy,
+            @RequestParam(defaultValue = "asc") String sortDirection
+    ) {
+        return droneService.findAllWithPaginationAndSorting(pageNumber, pageSize, sortBy, sortDirection);
     }
 
     @PostMapping("/drone")

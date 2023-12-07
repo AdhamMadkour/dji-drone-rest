@@ -36,6 +36,19 @@ public class DroneDaoImpl implements DroneDao {
     }
 
     @Override
+    public List<Drone> findAllWithPaginationAndSorting(int pageNumber, int pageSize, String sortBy, String sortDirection) {
+        String queryString = "FROM Drone";
+        if (sortBy != null && sortDirection != null) {
+            queryString += " ORDER BY " + sortBy + " " + sortDirection;
+        }
+        List<Drone> drones = entityManager.createQuery(queryString, Drone.class)
+                .setFirstResult((pageNumber - 1) * pageSize)
+                .setMaxResults(pageSize)
+                .getResultList();
+        return drones;
+    }
+
+    @Override
     public Drone saveDrone(Drone drone) {
         if (drone.getBatteryCapacity() < 25 && drone.getState() == State.LOADING) {
             throw new DroneBatteryLowException("Drone battery is low" + drone.getBatteryCapacity() + "% it should be more than 25%");

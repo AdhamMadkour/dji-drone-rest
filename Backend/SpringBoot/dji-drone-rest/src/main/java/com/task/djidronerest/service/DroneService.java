@@ -9,6 +9,8 @@ public interface DroneService {
     Drone findById(String serialNumber);
     List<Drone> findAll();
 
+    List<Drone> findAllWithPaginationAndSorting(int pageNumber, int pageSize, String sortBy, String sortDirection);
+
     Drone saveDrone(Drone drone);
     List<Drone> findAvailable();
 
