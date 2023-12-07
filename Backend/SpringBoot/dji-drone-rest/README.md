@@ -11,6 +11,7 @@
 ![](https://img.shields.io/badge/IntellijIDEA-000000?style=for-the-badge&logo=intellij-idea&logoColor=white)
 ![](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
 ![](https://img.shields.io/badge/Github-181717?style=for-the-badge&logo=github&logoColor=white)
+![](https://img.shields.io/badge/Swagger-85EA2D?style=for-the-badge&logo=swagger&logoColor=black)
 
 ## Diagrams
 
