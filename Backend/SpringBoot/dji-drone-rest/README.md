@@ -62,7 +62,8 @@ The API supports the following endpoints:
 
 Returns a list of all drones in the database with their loaded medication items.
 
-###  Query Parameters to filter the results
+####  Query Parameters to filter the results `Optional`
+`api/drone?pageNumber=1&pageSize=1&sortBy=model&sortDirection=asc`
 
 | Parameter       | Type     | Description                    |
 |:----------------|:---------|:-------------------------------|
@@ -70,6 +71,7 @@ Returns a list of all drones in the database with their loaded medication items.
 | `pageSize`      | `int`    | The page size of the results   |
 | `sortBy`        | `String` | The field name to sort by      |
 | `sortDirection` | `String` | The direction of the sorting   |
+
 
 ```HTTP
 GET /api/drones

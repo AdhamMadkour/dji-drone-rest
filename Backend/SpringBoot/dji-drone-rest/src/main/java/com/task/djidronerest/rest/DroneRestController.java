@@ -22,15 +22,6 @@ public class DroneRestController {
         this.droneService = droneService;
     }
 
-//    @GetMapping("/drone")
-//    @Operation(
-//            summary = "Get all drones and the medication they are carrying",
-//            description = "Get all drones and the medication they are carrying"
-//    )
-//    public java.util.List<Drone> findAll() {
-//        return droneService.findAll();
-//    }
-
     @GetMapping("/drone")
     @Operation(
             summary = "Get all drones and the medication they are carrying with pagination and sorting",
