@@ -1,7 +1,8 @@
 package com.task.djidronerest.dao;
 
 import com.task.djidronerest.entity.Drone;
-import com.task.djidronerest.entity.State;
+import com.task.djidronerest.entity.enums.State;
+import com.task.djidronerest.dao.response.BatteryDetailsReponse;
 import com.task.djidronerest.exception.DroneBatteryLowException;
 import com.task.djidronerest.exception.DroneNotFoundException;
 import jakarta.persistence.EntityManager;

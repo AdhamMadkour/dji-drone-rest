@@ -1,6 +1,6 @@
-package com.task.djidronerest.rest;
+package com.task.djidronerest.controller;
 
-import com.task.djidronerest.dao.BatteryDetailsReponse;
+import com.task.djidronerest.dao.response.BatteryDetailsReponse;
 import com.task.djidronerest.entity.Drone;
 import com.task.djidronerest.service.DroneService;
 import io.swagger.v3.oas.annotations.Operation;

@@ -13,14 +13,14 @@ public class Medication {
     @Column(name = "medication_id")
     private Integer id;
     @NotBlank
-    @Pattern(regexp = "^[a-zA-Z0-9_-]+$", message = "Name must contain only letters, numbers, '-', and '_'")
+    @Pattern(regexp = "^[a-zA-Z0-9_-]+$", message = "{Medication.name.pattern}")
     @Column(name = "name", nullable = false)
     private String name;
 
     @Column(name = "weight", nullable = false)
     private Integer weight;
     @NotBlank
-    @Pattern(regexp = "^[A-Z0-9_]+$", message = "Code must contain only upper case letters, numbers, and '_'")
+    @Pattern(regexp = "^[A-Z0-9_]+$", message = "{Medication.code.pattern}")
     @Column(name = "code", nullable = false)
     private String code;
 

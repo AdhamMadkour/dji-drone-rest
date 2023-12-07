@@ -1,6 +1,7 @@
 package com.task.djidronerest.dao;
 
 import com.task.djidronerest.entity.Drone;
+import com.task.djidronerest.dao.response.BatteryDetailsReponse;
 
 import java.util.List;
 

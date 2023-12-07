@@ -1,10 +1,10 @@
 package com.task.djidronerest;
 
-import com.task.djidronerest.dao.BatteryDetailsReponse;
+import com.task.djidronerest.dao.response.BatteryDetailsReponse;
 import com.task.djidronerest.entity.Drone;
 import com.task.djidronerest.entity.Medication;
-import com.task.djidronerest.entity.Model;
-import com.task.djidronerest.entity.State;
+import com.task.djidronerest.entity.enums.Model;
+import com.task.djidronerest.entity.enums.State;
 import com.task.djidronerest.service.DroneService;
 import com.task.djidronerest.service.MedicaionService;
 import org.junit.jupiter.api.Test;
@@ -28,7 +28,7 @@ class DjiDroneRestApplicationTests {
     }
 
     @Test
-    public void testGetAllDrones() {
+    void testGetAllDrones() {
         List<Drone> drones = droneService.findAll();
         int nonEmptyDrones = 0;
         assertNotNull(drones, "This list should not be empty");
@@ -61,7 +61,7 @@ class DjiDroneRestApplicationTests {
         List<Drone> drones = droneService.findAvailable();
         assertNotNull(drones, "This list should not be empty");
         for (Drone drone : drones) {
-            assertEquals(drone.getState(), State.IDLE);
+            assertEquals(State.IDLE, drone.getState());
         }
     }
 
@@ -70,7 +70,7 @@ class DjiDroneRestApplicationTests {
         BatteryDetailsReponse batteryDetailsReponse = droneService.getDroneBattery("DJI0004");
         Drone drone = droneService.findById("DJI0004");
         assertNotNull(batteryDetailsReponse, "This list should not be empty");
-        assertEquals(batteryDetailsReponse.getSerialNumber(), "DJI0004");
+        assertEquals("DJI0004", batteryDetailsReponse.getSerialNumber());
         assertEquals(batteryDetailsReponse.getBatteryPercentage(), drone.getBatteryCapacity());
     }
 

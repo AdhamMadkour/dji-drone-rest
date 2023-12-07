@@ -1,4 +1,4 @@
-package com.task.djidronerest.dao;
+package com.task.djidronerest.dao.response;
 
 public class BatteryDetailsReponse {
     private String serialNumber;

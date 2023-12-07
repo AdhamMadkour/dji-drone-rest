@@ -1,4 +1,4 @@
-package com.task.djidronerest.rest;
+package com.task.djidronerest.controller;
 
 import com.task.djidronerest.entity.Medication;
 import com.task.djidronerest.service.MedicaionService;

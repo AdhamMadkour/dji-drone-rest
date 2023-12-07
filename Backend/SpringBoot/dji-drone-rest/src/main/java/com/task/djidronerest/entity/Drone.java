@@ -2,6 +2,8 @@ package com.task.djidronerest.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.task.djidronerest.entity.enums.Model;
+import com.task.djidronerest.entity.enums.State;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Size;
@@ -21,10 +23,10 @@ public class Drone {
     private Model model;
 
     @Column(name = "weight_limit", nullable = false)
-    @Max(value = 500, message = "Weight limit must be less than 500")
+    @Max(value = 500, message = "{Drone.weightLimit.max}")
     private Integer weightLimit;
     @Column(name = "battery_capacity", nullable = false)
-    @Max(value = 100, message = "Battery capacity must be less than 100")
+    @Max(value = 100, message = "{Drone.batteryCapacity.max}")
     private Integer batteryCapacity;
     @Column(name = "state")
     @Enumerated(EnumType.STRING)

@@ -14,7 +14,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
         )
 )
 
-// Exception Handling
 @EnableScheduling
 public class DjiDroneRestApplication {
 
