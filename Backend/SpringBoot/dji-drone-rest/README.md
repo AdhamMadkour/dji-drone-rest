@@ -31,13 +31,15 @@ git clone https://github.com/AdhamMadkour/dji-drone-rest.git
     * Create a database with preferred name
     * Change the datasource url in application.properties file
     * Change the username and password in application.properties file
-    * Go to the seed.sql file and copy the content and paste it in your database query console and run it
+    * Go to the drone.sql file and copy the content and paste it in your database query console and run it
+    * Go to the medication.sql file and copy the content and paste it in your database query console and run it
     * Now you have the database ready to run the project
 
 ### 3- Run the `DjiDroneRestApplicationTests` class
 
-### 4- Now you can use the API
+### 4- Run the project `DjiDroneRestApplication` class
 
+### 5- Now you can use the API
 
 ## API Documentation
 
@@ -276,7 +278,7 @@ GET /api/dronebattery/{serialNumber}
 }
 ```
 
-## 7. There is also more endpoints you can check swagger documentation
+## 7. There is also more details in the swagger documentation
 
 ```
 http://localhost:8080/swagger-ui/index.html

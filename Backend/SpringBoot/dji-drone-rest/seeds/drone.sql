@@ -1,17 +1,15 @@
 create table drone
 (
-    serial_number    varchar(100) not null
+    serial_number    varchar(100)                                                               not null
         primary key,
-    battery_capacity int          not null,
-    model            tinyint      not null,
-    state            tinyint      null,
-    weight_limit     int          not null,
-    check (`model` between 0 and 3),
-    check (`state` between 0 and 5)
+    battery_capacity int                                                                        not null,
+    model            enum ('Lightweight', 'Middleweight', 'Cruiserweight', 'Heavyweight')       not null,
+    state            enum ('IDLE', 'LOADING', 'LOADED', 'DELIVERING', 'DELIVERED', 'RETURNING') null,
+    weight_limit     int                                                                        not null
 );
 
-INSERT INTO remotedrone.drone (serial_number, battery_capacity, model, state, weight_limit) VALUES ('AB', 50, 3, 3, 50);
-INSERT INTO remotedrone.drone (serial_number, battery_capacity, model, state, weight_limit) VALUES ('ABC123', 100, 3, 3, 500);
-INSERT INTO remotedrone.drone (serial_number, battery_capacity, model, state, weight_limit) VALUES ('DJI0004', 100, 2, 0, 250);
-INSERT INTO remotedrone.drone (serial_number, battery_capacity, model, state, weight_limit) VALUES ('DJI0005', 20, 2, 0, 250);
-INSERT INTO remotedrone.drone (serial_number, battery_capacity, model, state, weight_limit) VALUES ('jsdfhksd', 25, 3, 0, 50);
+INSERT INTO remotedrone.drone (serial_number, battery_capacity, model, state, weight_limit) VALUES ('AB', 50, 'Heavyweight', 'DELIVERING', 50);
+INSERT INTO remotedrone.drone (serial_number, battery_capacity, model, state, weight_limit) VALUES ('ABC123', 100, 'Heavyweight', 'DELIVERING', 500);
+INSERT INTO remotedrone.drone (serial_number, battery_capacity, model, state, weight_limit) VALUES ('DJI0004', 100, 'Cruiserweight', 'IDLE', 250);
+INSERT INTO remotedrone.drone (serial_number, battery_capacity, model, state, weight_limit) VALUES ('DJI0005', 20, 'Cruiserweight', 'IDLE', 250);
+INSERT INTO remotedrone.drone (serial_number, battery_capacity, model, state, weight_limit) VALUES ('jsdfhksd', 25, 'Heavyweight', 'IDLE', 50);

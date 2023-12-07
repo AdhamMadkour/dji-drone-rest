@@ -2,6 +2,8 @@ package com.task.djidronerest.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 
 @Entity
 @Table(name = "medication")
@@ -10,13 +12,18 @@ public class Medication {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "medication_id")
     private Integer id;
-    @Column(name = "name")
+    @NotBlank
+    @Pattern(regexp = "^[a-zA-Z0-9_-]+$", message = "Name must contain only letters, numbers, '-', and '_'")
+    @Column(name = "name", nullable = false)
     private String name;
-    @Column(name = "code")
+
+    @Column(name = "weight", nullable = false)
+    private Integer weight;
+    @NotBlank
+    @Pattern(regexp = "^[A-Z0-9_]+$", message = "Code must contain only upper case letters, numbers, and '_'")
+    @Column(name = "code", nullable = false)
     private String code;
 
-    @Column(name = "weight")
-    private Integer weight;
     @Column(name = "image")
     private String image;
 

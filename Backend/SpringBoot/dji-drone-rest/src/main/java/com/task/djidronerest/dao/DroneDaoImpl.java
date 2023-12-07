@@ -44,7 +44,7 @@ public class DroneDaoImpl implements DroneDao {
 
     @Override
     public List<Drone> findAvailable() {
-        List<Drone> drones = entityManager.createQuery("FROM Drone WHERE state = 0", Drone.class).getResultList();
+        List<Drone> drones = entityManager.createQuery("FROM Drone WHERE state = 'IDLE'", Drone.class).getResultList();
         return drones;
     }
 

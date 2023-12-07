@@ -30,7 +30,6 @@ public class MedicationRestController {
             description = "Add a new medication"
     )
     public Medication saveMedication(@RequestBody Medication medication) {
-        System.out.println("MedicationRestController.saveMedication: " + medication);
         return medicationService.saveMedication(medication);
     }
 }

@@ -3,6 +3,8 @@ package com.task.djidronerest.entity;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Size;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,14 +14,20 @@ import java.util.List;
 public class Drone {
     @Id
     @Column(name = "serial_number", nullable = false, length = 100)
+    @Size(max = 100)
     private String serialNumber;
     @Column(name = "model", nullable = false)
+    @Enumerated(EnumType.STRING)
     private Model model;
+
     @Column(name = "weight_limit", nullable = false)
+    @Max(value = 500, message = "Weight limit must be less than 500")
     private Integer weightLimit;
     @Column(name = "battery_capacity", nullable = false)
+    @Max(value = 100, message = "Battery capacity must be less than 100")
     private Integer batteryCapacity;
     @Column(name = "state")
+    @Enumerated(EnumType.STRING)
     private State state;
 
     @OneToMany(mappedBy = "drone", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
