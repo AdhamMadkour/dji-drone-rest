@@ -2,6 +2,8 @@ package com.task.djidronerest.dao;
 
 import com.task.djidronerest.entity.Drone;
 import com.task.djidronerest.entity.State;
+import com.task.djidronerest.exception.DroneBatteryLowException;
+import com.task.djidronerest.exception.DroneNotFoundException;
 import jakarta.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -22,7 +24,7 @@ public class DroneDaoImpl implements DroneDao {
     public Drone findById(String serialNumber) {
         Drone drone = entityManager.find(Drone.class, serialNumber);
         if (drone == null) {
-            throw new RuntimeException("Drone with serial number " + serialNumber + " not found");
+            throw new DroneNotFoundException("Drone with serial number " + serialNumber + " not found");
         }
         return drone;
     }
@@ -36,7 +38,7 @@ public class DroneDaoImpl implements DroneDao {
     @Override
     public Drone saveDrone(Drone drone) {
         if (drone.getBatteryCapacity() < 25 && drone.getState() == State.LOADING) {
-            throw new RuntimeException("Drone with serial number " + drone.getSerialNumber() + " has low battery");
+            throw new DroneBatteryLowException("Drone battery is low" + drone.getBatteryCapacity() + "% it should be more than 25%");
         }
         entityManager.merge(drone);
         return drone;
@@ -52,7 +54,7 @@ public class DroneDaoImpl implements DroneDao {
     public BatteryDetailsReponse getDroneBattery(String serialNumber) {
         Drone drone = entityManager.find(Drone.class, serialNumber);
         if (drone == null) {
-            throw new RuntimeException("Drone with serial number " + serialNumber + " not found");
+            throw new DroneNotFoundException("Drone with serial number " + serialNumber + " not found");
         }
         BatteryDetailsReponse batteryDetailsReponse = new BatteryDetailsReponse();
         batteryDetailsReponse.setSerialNumber(drone.getSerialNumber());
