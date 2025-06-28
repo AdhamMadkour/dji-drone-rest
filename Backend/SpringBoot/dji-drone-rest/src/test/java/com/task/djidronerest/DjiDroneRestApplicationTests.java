@@ -6,7 +6,7 @@ import com.task.djidronerest.entity.Medication;
 import com.task.djidronerest.entity.enums.Model;
 import com.task.djidronerest.entity.enums.State;
 import com.task.djidronerest.service.DroneService;
-import com.task.djidronerest.service.MedicaionService;
+import com.task.djidronerest.service.MedicationService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -21,7 +21,7 @@ class DjiDroneRestApplicationTests {
     private DroneService droneService;
 
     @Autowired
-    private MedicaionService medicaionService;
+    private MedicationService medicationService;
 
     @Test
     void contextLoads() {
@@ -123,8 +123,8 @@ class DjiDroneRestApplicationTests {
         medication.setImage("paracetamol.jpg");
         Drone drone = droneService.findById("DJI0004");
         medication.setDrone(drone);
-        Medication medicationService = medicaionService.saveMedication(medication);
-        drone.getMedications().add(medicationService);
+        Medication savedMedication = medicationService.saveMedication(medication);
+        drone.getMedications().add(savedMedication);
         List<Drone> drones = droneService.findAll();
         Drone drone1 = drones.stream().filter(d -> d.getSerialNumber().equals("DJI0004")).findFirst().get();
         assert (
@@ -144,7 +144,7 @@ class DjiDroneRestApplicationTests {
         medication.setDrone(drone);
         assertThrows(
                 RuntimeException.class,
-                () -> medicaionService.saveMedication(medication),
+                () -> medicationService.saveMedication(medication),
                 "Drone with serial number IamNotADrone not found"
         );
     }
@@ -160,7 +160,7 @@ class DjiDroneRestApplicationTests {
         medication.setDrone(drone);
         assertThrows(
                 RuntimeException.class,
-                () -> medicaionService.saveMedication(medication),
+                () -> medicationService.saveMedication(medication),
                 "Drone with serial number DJI0005 has low battery"
         );
     }
@@ -176,7 +176,7 @@ class DjiDroneRestApplicationTests {
         medication.setDrone(drone);
         assertThrows(
                 RuntimeException.class,
-                () -> medicaionService.saveMedication(medication),
+                () -> medicationService.saveMedication(medication),
                 "Drone with serial number DJI0004 is overloaded"
         );
     }
