@@ -2,7 +2,7 @@ package com.task.djidronerest.services;
 
 import com.task.djidronerest.service.DroneService;
 import com.task.djidronerest.service.DroneServiceImpl;
-import com.task.djidronerest.service.MedicaionService;
+import com.task.djidronerest.service.MedicationService;
 import com.task.djidronerest.service.MedicationServiceImpl;
 import org.mockito.Mockito;
 import org.springframework.boot.test.context.TestConfiguration;
@@ -17,7 +17,7 @@ public class TestConfig {
     }
 
     @Bean
-    public MedicaionService medicaionService() {
+    public MedicationService medicationService() {
         return Mockito.mock(MedicationServiceImpl.class);
     }
 

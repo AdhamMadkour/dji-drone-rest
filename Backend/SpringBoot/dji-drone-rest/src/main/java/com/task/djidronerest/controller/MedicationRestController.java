@@ -1,7 +1,7 @@
 package com.task.djidronerest.controller;
 
 import com.task.djidronerest.entity.Medication;
-import com.task.djidronerest.service.MedicaionService;
+import com.task.djidronerest.service.MedicationService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,10 +17,10 @@ import org.springframework.web.bind.annotation.RestController;
         description = "Provides a list of medications and allows to add new medications"
 )
 public class MedicationRestController {
-    private MedicaionService medicationService;
+    private MedicationService medicationService;
 
     @Autowired
-    public MedicationRestController(MedicaionService medicationService) {
+    public MedicationRestController(MedicationService medicationService) {
         this.medicationService = medicationService;
     }
 

@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class MedicationServiceImpl implements MedicaionService {
+public class MedicationServiceImpl implements MedicationService {
     private MedicationDao medicationDao;
 
     public MedicationServiceImpl(MedicationDao medicationDao) {
